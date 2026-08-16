@@ -1,19 +1,28 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Restudio Education Docs</title>
-   <link rel="icon" type="image/x-icon" href="https://i.postimg.cc/02cSd2QF/restudio-profile.png">
-    <!-- Tiny5 Font -->
+    <link rel="icon" type="image/x-icon" href="https://i.postimg.cc/02cSd2QF/restudio-profile.png">
+    <!-- Tiny5 for navbar -->
     <link href="https://fonts.cdnfonts.com/css/tiny5" rel="stylesheet">
-
+    <!-- Dosis for headings -->
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 (free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        * {
             margin: 0;
-            background-color: #f5f5f5;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Linux Libertine', 'Georgia', 'Times New Roman', serif;
+            background-color: #f6f6f6;
             line-height: 1.6;
+            color: #202122;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -25,6 +34,7 @@
             padding: 10px 20px;
             display: flex;
             align-items: center;
+            flex-wrap: wrap;
         }
 
         .navbar img {
@@ -37,102 +47,301 @@
             font-size: 20px;
             margin: 0;
             color: #ffffff;
+            letter-spacing: 1px;
         }
 
-        .page-title {
-            font-family: 'Tiny5', sans-serif;
+        /* ===== BANNER (Uiverse) – no text ===== */
+        .banner-container {
+            width: 100%;
+            height: 120px;
+            --s: 60px;
+            --c1: #180a22;
+            --c2: #5b42f3;
+            --_g: radial-gradient(
+                25% 25% at 25% 25%,
+                var(--c1) 99%,
+                rgba(0, 0, 0, 0) 101%
+            );
+            background: var(--_g) var(--s) var(--s) / calc(2 * var(--s))
+                calc(2 * var(--s)),
+                var(--_g) 0 0 / calc(2 * var(--s)) calc(2 * var(--s)),
+                radial-gradient(50% 50%, var(--c2) 98%, rgba(0, 0, 0, 0)) 0 0 / var(--s)
+                var(--s),
+                repeating-conic-gradient(var(--c2) 0 50%, var(--c1) 0 100%)
+                calc(0.5 * var(--s)) 0 / calc(2 * var(--s)) var(--s);
+        }
+
+        .docs-container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 24px;
+            flex: 1;
+            width: 100%;
+        }
+
+        .docs-card {
+            background: #ffffff;
+            border: 1px solid #e2e2e2;
+            border-radius: 4px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            padding: 32px 36px;
+            transition: all 0.2s ease;
+        }
+
+        .page-headline {
+            font-family: 'Dosis', 'Times New Roman', serif;
+            font-weight: 600;
+            font-size: 32px;
+            border-bottom: 1px solid #c8ccd1;
+            padding-bottom: 10px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #1a1f2b;
+        }
+
+        .page-headline i {
+            color: #DB3D40;
             font-size: 28px;
-            margin: 20px 20px 10px 20px;
-            color: #222;
-            text-align: center;
+            margin-right: 4px;
+        }
+
+        h2 {
+            font-family: 'Dosis', 'Times New Roman', serif;
+            font-weight: 600;
+            font-size: 26px;
+            margin: 32px 0 14px 0;
+            border-bottom: 1px solid #eaecf0;
+            padding-bottom: 6px;
+            color: #1f2937;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 i {
+            color: #DB3D40;
+            font-size: 24px;
+        }
+
+        .docs-card p {
+            margin: 16px 0;
+            line-height: 1.7;
+            color: #2d3748;
+        }
+
+        .docs-card strong {
+            color: #0c4e6e;
+        }
+
+        .docs-card a {
+            color: #0645ad;
+            text-decoration: none;
+        }
+
+        .docs-card a:hover {
+            text-decoration: underline;
+        }
+
+        .highlight-box {
+            background: #f8fafc;
+            border-left: 6px solid #DB3D40;
+            padding: 18px 24px;
+            margin: 28px 0 20px;
+            border-radius: 10px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.02);
+        }
+
+        .highlight-box strong {
+            color: #0c4e6e;
+        }
+
+        .footer-wiki {
+            background-color: #f8f9fa;
+            border-top: 1px solid #e2e2e2;
+            padding: 16px 24px;
+            font-size: 13px;
+            color: #54595d;
+            font-family: sans-serif;
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .footer-wiki a {
+            color: #0645ad;
+            text-decoration: none;
+        }
+
+        .footer-wiki a:hover {
+            text-decoration: underline;
         }
 
         hr {
-            margin: 0 20px 30px 20px;
-            border: 1px solid #ccc;
+            margin: 28px 0 18px;
+            border: 0;
+            border-top: 1px solid #e2e2e2;
         }
 
-        .content-section {
-            max-width: 900px;
-            margin: 0 auto 40px auto;
-            padding: 0 20px;
-            flex: 1;
+        .contact-simple {
+            background: #f1f5f9;
+            padding: 10px 18px;
+            border-radius: 40px;
+            display: inline-block;
+            margin-top: 6px;
+            color: #1e293b;
         }
 
-        .plain-text p {
-            margin: 1.2em 0;
-            color: #222;
+        .contact-simple a {
+            color: #0645ad;
+            text-decoration: none;
+        }
+
+        .contact-simple a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-simple i {
+            color: #DB3D40;
+            width: 20px;
+        }
+
+        .contact-simple .email-link {
+            color: #0645ad;
+        }
+
+        .contact-section {
+            margin: 40px 0 20px 0;
+            background: #f1f5f9;
+            padding: 20px 24px;
+            border-radius: 16px;
+            border-left: 6px solid #DB3D40;
+        }
+
+        .contact-section h2 {
+            font-family: 'Dosis', 'Times New Roman', serif;
+            font-weight: 600;
+            font-size: 24px;
+            margin: 0 0 12px 0;
+            border-bottom: none;
+            padding-bottom: 0;
+            color: #1a1f2b;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-section h2 i {
+            color: #DB3D40;
+            font-size: 24px;
+        }
+
+        .contact-section p {
+            margin: 8px 0;
             font-size: 1rem;
         }
 
-        .footer {
-            text-align: left;
-            padding: 10px 20px;
-            color: #666;
-            border-top: none;
-            margin-top: 30px;
+        .contact-section a {
+            color: #0645ad;
+            text-decoration: none;
         }
 
-.contact-section {
-    text-align: center;
-    margin: 40px auto;
-}
+        .contact-section a:hover {
+            text-decoration: underline;
+        }
 
-.contact-section h2 {
-    font-family: 'Tiny5', sans-serif;
-    margin-bottom: 15px;
-}
+        .contact-section i {
+            color: #DB3D40;
+            width: 20px;
+        }
+
+        @media (max-width: 700px) {
+            .docs-card {
+                padding: 24px 20px;
+            }
+            .page-headline {
+                font-size: 26px;
+                flex-wrap: wrap;
+            }
+            .banner-container {
+                height: 80px;
+            }
+            .contact-simple {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 6px 12px;
+            }
+            .contact-section {
+                padding: 16px 18px;
+            }
+        }
     </style>
 </head>
 <body>
-
     <!-- Navbar -->
     <div class="navbar">
-        <img src="https://i.postimg.cc/yYCszSyc/swrh-restudio.png" alt="Logo">
+        <img src="https://i.postimg.cc/yYCszSyc/swrh-restudio.png" alt="Restudio Logo">
         <h1>Awael Platform Documents</h1>
     </div>
 
-    <!-- Page Title -->
-    <h1 class="page-title">welcome to Restudio Education Docs!</h1>
-    <hr>
+    <!-- ===== BANNER (Uiverse) – no text ===== -->
+    <div class="banner-container"></div>
 
-    <!-- Main content -->
-    <div class="content-section plain-text">
-        <p><strong>What is the Al-Awael platform?</strong></p>
-        <p>Al-Awael Platform is a platform developed for Al-Awael Intermediate School in Abha, Saudi Arabia. (The platform was created by Restudio Education)</p>
+    <!-- Main docs container -->
+    <div class="docs-container">
+        <div class="docs-card">
 
-        <p><strong>Are there any Restudio products on the AL-Awael Platform?</strong></p>
-        <p>The Jane's Office suite includes a range of productivity applications, such as Restudio Presentation, Restudio Tables, and Restudio Documents. Designed with simplicity and efficiency in mind, the suite offers a lightweight alternative to Microsoft 365 while providing essential tools for creating documents, presentations, and spreadsheets.</p>
+            <!-- Headline -->
+            <div class="page-headline">
+                <i class="fas fa-graduation-cap"></i>
+                <span>welcome to Restudio Education Docs!</span>
+            </div>
 
+            <!-- ====== EXACT CONTENT (unchanged) ====== -->
+            <p><strong>What is the Al-Awael platform?</strong></p>
+            <p>Al-Awael Platform is a platform developed for Al-Awael Intermediate School in Abha, Saudi Arabia. (The platform was created by Restudio Education)</p>
 
-<p>For more information, please visit the <a href="https://restudiosoftwarelaboratories.github.io/restudio/" target="_blank">official Restudio website</a>.</p>
+            <p><strong>Are there any Restudio products on the AL-Awael Platform?</strong></p>
+            <p>The Jane's Office suite includes a range of productivity applications, such as Restudio Presentation, Restudio Tables, and Restudio Documents. Designed with simplicity and efficiency in mind, the suite offers a lightweight alternative to Microsoft 365 while providing essential tools for creating documents, presentations, and spreadsheets.</p>
 
-        <p><strong>Does AL-Awael Platform rely on Microsoft 365?</strong></p>
-        <p>Yes, but only partly because AL-Awael Platform relies on Restudio Janeoffice.</p>
-        
-        <p><strong>Is Jane's the best alternative to Microsoft 365?</strong></p>
-        <p>Yes, Restudio JaneOffice serves as a lightweight and user-friendly alternative to Microsoft 365, particularly for users seeking simplicity and efficiency. However, for organizations or individuals requiring a comprehensive productivity ecosystem with advanced features and extensive cloud integration, Microsoft 365 remains the more capable and feature-rich solution.</p>
-        
-        <p><strong>If I encounter a problem with AL-Awael Platform, can I contact Restudio Support?</strong></p>
-        <p>Yes! You can explain the problem you encountered with the platform to Restudio Support or contact the Al-Awael School's technical support manager.</p>
+            <p>For more information, please visit the <a href="https://restudiosoftwarelaboratories.github.io/restudio/" target="_blank">official Restudio website</a>.</p>
+
+            <p><strong>Does AL-Awael Platform rely on Microsoft 365?</strong></p>
+            <p>Yes, but only partly because AL-Awael Platform relies on Restudio Janeoffice.</p>
+
+            <p><strong>Is Jane's the best alternative to Microsoft 365?</strong></p>
+            <p>Yes, Restudio JaneOffice serves as a lightweight and user-friendly alternative to Microsoft 365, particularly for users seeking simplicity and efficiency. However, for organizations or individuals requiring a comprehensive productivity ecosystem with advanced features and extensive cloud integration, Microsoft 365 remains the more capable and feature-rich solution.</p>
+
+            <p><strong>If I encounter a problem with AL-Awael Platform, can I contact Restudio Support?</strong></p>
+            <p>Yes! You can explain the problem you encountered with the platform to Restudio Support or contact the Al-Awael School's technical support manager.</p>
+
+            <!-- ====== CONTACT SECTION (styled like privacy page) ====== -->
+            <div class="contact-section">
+                <h2><i class="fas fa-address-card"></i> Contact Us</h2>
+                <p>
+                    <i class="fas fa-phone"></i>
+                    Phone: <a href="tel:+966591674555">+966 59 167 4555 - technical support</a>
+                </p>
+                <p>
+                    <i class="fas fa-envelope"></i>
+                    Email: <a href="mailto:restudiosupport@gmail.com">restudiosupport@gmail.com</a>
+                </p>
+            </div>
+
+            <!-- acceptance note (matching privacy page style) -->
+            <div style="background: #eef2ff; padding: 12px 20px; border-radius: 60px; margin-top: 30px; border: 1px solid #cbd5e1; text-align: center; color: #1e3a5f;">
+                <i class="fas fa-school" style="margin-right: 8px; color: #DB3D40;"></i> Restudio Education — built for learning
+            </div>
+
+        </div>
     </div>
-<div class="contact-section">
-    <h2>Contact Us</h2>
 
-    <p>
-        Phone:
-        <a href="tel:+966591674555">+966 59 167 4555</a>
-    </p>
-
-    <p>
-        Email:
-        <a href="mailto:restudiosupport@gmail.com">restudiosupport@gmail.com</a>
-    </p>
-</div>
-
-
-
-    <div class="footer">© Restudio software laboratories</div>
-
+    <!-- Footer -->
+    <div class="footer-wiki">
+        <i class="far fa-copyright" style="margin-right: 4px;"></i> Restudio software laboratories
+        <span style="float: right; font-size: 12px; color: #6b7280;">
+            <i class="fas fa-code"></i> open source · free
+        </span>
+    </div>
 </body>
 </html>
